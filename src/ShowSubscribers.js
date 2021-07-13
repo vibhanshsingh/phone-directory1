@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from "react";
+import React, {useEffect} from "react";
 import './ShowSubscribers.css';
 import Header from "./common/Header";
 import {Link} from 'react-router-dom';
@@ -12,9 +12,9 @@ export default function ShowSubscribers({subscribersList, deleteSubscriberHandle
 
     },[subscribersList])
 
-    function onDeletedClick (subscriberId) {
-        deleteSubscriberHandler(subscriberId);
-    }
+    // function onDeletedClick (subscriberId) {
+    //     deleteSubscriberHandler(subscriberId);
+    // }
         return (
             <div>
                 <Header heading="Phone Directory" />

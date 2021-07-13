@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import AddSubscribers from './AddSubscribers';
 import ShowSubscribers from "./ShowSubscribers";
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import {useHistory} from 'react-router-dom';
+// import {useHistory} from 'react-router-dom';
 
 export default function PhoneDirectory() {
 
@@ -22,10 +22,8 @@ export default function PhoneDirectory() {
     function deleteSubscriberHandler (subscriberID) {
 
         const newSubscribers = subscribersList.filter((subscriber)=>subscriber.id !== subscriberID) ;
-
         setSubscribersList(newSubscribers);
     }
-
 
     function addSubscriberHandler (newSubscriber) {
         if(subscribersList.length > 0) {
@@ -39,7 +37,6 @@ export default function PhoneDirectory() {
         console.log("Phone directory");
         console.log(subscribersList);
     }
-
 
 
     return (
