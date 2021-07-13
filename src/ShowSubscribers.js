@@ -1,9 +1,16 @@
-import React, {Component} from "react";
+import React, {Component, useEffect} from "react";
 import './ShowSubscribers.css';
 import Header from "./common/Header";
 import {Link} from 'react-router-dom';
 
 export default function ShowSubscribers({subscribersList, deleteSubscriberHandler}) {
+
+    useEffect(() => {
+
+        if(subscribersList && subscribersList.length)
+            document.title = "Phone Directory - Number of Subscribers " + subscribersList.length
+
+    },[subscribersList])
 
     function onDeletedClick (subscriberId) {
         deleteSubscriberHandler(subscriberId);
@@ -23,7 +30,7 @@ export default function ShowSubscribers({subscribersList, deleteSubscriberHandle
                                 <span className="grid-item">{sub.name}</span>
                                 <span className="grid-item">{sub.phone}</span>
                                 <span className="grid-item action-btn-container">
-                      <button className="custom-btn delete-btn" onClick={()=>onDeletedClick(sub.id)}>Delete</button>
+                      <button className="custom-btn delete-btn" onClick={()=>deleteSubscriberHandler(sub.id)}>Delete</button>
                                 </span>
                             </div>
                         })
