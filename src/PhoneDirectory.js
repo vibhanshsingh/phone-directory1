@@ -1,4 +1,4 @@
-import React, {Component, useState, Fragment, useEffect} from 'react';
+import React, {Component, useState, Fragment, useEffect, useCallback} from 'react';
 import AddSubscriber from './AddSubscriber';
 import ShowSubscribers from './ShowSubscribers';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -7,9 +7,9 @@ import {SubscriberCountContext} from "./SubscriberCountContext";
 
 export default function PhoneDirectory(){
 
-    const [subscribersList,setSubscribersList] = useState([]);
+    const [subscribersList, setSubscribersList] = useState([]);
 
-    async function loadData(){
+    async function loadData() {
 
         const rawResponse = await fetch("http://localhost:7081/api/contacts")
         const data = await rawResponse.json()
@@ -25,23 +25,15 @@ export default function PhoneDirectory(){
 
     },[])
 
-   async function deleteSubscriberHandler (subscriberId)  {
 
-        //const newSubscribers = subscribersList.filter((subscriber)=>subscriber.id !== subscriberId);
-       //setSubscribersList(newSubscribers)
 
-       // fetch("http://localhost:7081/api/contacts/" + subscriberId, {method: "DELETE"})
-       //     .then(input=>input.json())
-       //     .then(data=>{
-       //
-       //         loadData();
-       //     })
+    const deleteSubscriberHandler = useCallback(async (subscriberId)=>{
 
-       const rawResponse = await fetch("http://localhost:7081/api/contacts/" + subscriberId, {method: "DELETE"})
-       const data = await rawResponse.json();
-       await loadData();
+        const rawResponse = await fetch("http://localhost:7081/api/contacts/" + subscriberId, {method: "DELETE"})
+        const data = await rawResponse.json();
+        await loadData();
 
-    }
+    },[])
 
     async function addSubscriberHandler  (newSubscriber) {
 
