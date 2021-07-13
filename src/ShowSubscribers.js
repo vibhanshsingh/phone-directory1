@@ -13,7 +13,6 @@ export default function ShowSubscribers({subscribersList,deleteSubscriberHandler
 
   },[subscribersList])
 
-
   return (
       <div>
         <Header heading="Phone Directory" />
