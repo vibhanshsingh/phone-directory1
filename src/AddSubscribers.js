@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import Header from "./common/Header";
 import './AddSubscribers.css';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
-export default function AddSubscriber({addSubscriberHandler, history}){
+export default function AddSubscriber({addSubscriberHandler}){
 
     const [addSubscriberForm, setAddSubscriberForm] = useState({
         id: 0,
@@ -11,6 +11,7 @@ export default function AddSubscriber({addSubscriberHandler, history}){
         phone: ''
     });
 
+    const history = useHistory();
 
     const inputChangedHandler = (e) => {
         // function inputChangedHandler (e) {
@@ -30,6 +31,7 @@ export default function AddSubscriber({addSubscriberHandler, history}){
         addSubscriberHandler(addSubscriberForm);
         setAddSubscriberForm({id: 0, name: '', phone: ''})
         history.push("/");
+        // history.goBack();
     }
 
 

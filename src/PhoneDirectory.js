@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import AddSubscribers from './AddSubscribers';
 import ShowSubscribers from "./ShowSubscribers";
 import {BrowserRouter as Router, Route} from "react-router-dom";
+import {useHistory} from 'react-router-dom';
 
 export default function PhoneDirectory() {
 
@@ -17,7 +18,6 @@ export default function PhoneDirectory() {
                 name: 'Srishti Gupta',
                 phone: '888888888'
             }]);
-
 
     function deleteSubscriberHandler (subscriberID) {
 
@@ -46,7 +46,7 @@ export default function PhoneDirectory() {
         <Router>
             <div className={"main-container"}>
                 <Route exact path='/' render = {(props) => <ShowSubscribers {...props} subscribersList={subscribersList} deleteSubscriberHandler={(subscriberId) => deleteSubscriberHandler(subscriberId)}/>}/>
-                <Route exact path='/add' render = {({history}, props) => <AddSubscribers history={history} {...props} addSubscriberHandler={(newSubscriber)=>addSubscriberHandler(newSubscriber)}/>}/>
+                <Route exact path='/add' render = {({history}, props) => <AddSubscribers {...props} addSubscriberHandler={(newSubscriber)=>addSubscriberHandler(newSubscriber)}/>}/>
             </div>
         </Router>
     )
